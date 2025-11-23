@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify your email</title>
+    <style>
+      /* Mobile-first styles — many email clients ignore <style>, but keep for clients that support it */
+      body {
+        margin: 0;
+        padding: 0;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      img {
+        border: 0;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+        -ms-interpolation-mode: bicubic;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .container {
+          width: 100% !important;
+          padding: 16px !important;
+        }
+        .hero {
+          font-size: 22px !important;
+        }
+        .content {
+          font-size: 16px !important;
+        }
+        .btn {
+          width: 100% !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    style="
+      background-color: #f3f6fb;
+      font-family: Arial, Helvetica, sans-serif;
+    ">
+    <!-- Wrapper -->
+    <table
+      role="presentation"
+      width="100%"
+      cellpadding="0"
+      cellspacing="0"
+      style="background-color: #f3f6fb; padding: 24px 0">
+      <tr>
+        <td align="center">
+          <!-- Container -->
+          <table
+            role="presentation"
+            class="container"
+            width="600"
+            cellpadding="0"
+            cellspacing="0"
+            style="
+              background-color: #ffffff;
+              border-radius: 12px;
+              overflow: hidden;
+              box-shadow: 0 6px 18px rgba(20, 40, 80, 0.08);
+            ">
+            <!-- Header / logo -->
+            <tr>
+              <td
+                style="
+                  padding: 24px;
+                  text-align: center;
+                  background: linear-gradient(90deg, #5b8cff, #7be0ff);
+                ">
+                <img
+                  src="{{logo_url}}"
+                  alt="Company logo"
+                  width="96"
+                  style="display: block; margin: 0 auto 12px auto" />
+                <h1
+                  style="
+                    margin: 0;
+                    font-size: 20px;
+                    color: #ffffff;
+                    font-weight: 700;
+                  ">
+                  Verify your email
+                </h1>
+              </td>
+            </tr>
+
+            <!-- Hero -->
+            <tr>
+              <td style="padding: 28px 32px 18px; text-align: left">
+                <h2
+                  class="hero"
+                  style="margin: 0 0 12px 0; font-size: 24px; color: #10233b">
+                  Hey {{first_name}},
+                </h2>
+                <p
+                  class="content"
+                  style="
+                    margin: 0 0 18px 0;
+                    color: #475569;
+                    font-size: 15px;
+                    line-height: 1.5;
+                  ">
+                  Thanks for signing up — we just need to confirm your email
+                  address so you can start using your account.
+                </p>
+
+                <!-- Button (works in most clients) -->
+                <table
+                  role="presentation"
+                  cellpadding="0"
+                  cellspacing="0"
+                  style="margin: 18px 0">
+                  <tr>
+                    <td align="center">
+                      <a
+                        href="{{verification_link}}"
+                        target="_blank"
+                        style="
+                          display: inline-block;
+                          background-color: #1158ff;
+                          color: #ffffff;
+                          padding: 14px 22px;
+                          border-radius: 8px;
+                          font-weight: 700;
+                          font-size: 16px;
+                          text-decoration: none;
+                        "
+                        class="btn"
+                        >Verify Email</a
+                      >
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td
+                style="
+                  padding: 18px 24px;
+                  text-align: center;
+                  font-size: 12px;
+                  color: #94a3b8;
+                  background-color: #fbfdff;
+                ">
+                <p style="margin: 0 0 8px 0">
+                  If you didn't create an account, you can safely ignore this
+                  email.
+                </p>
+                <p style="margin: 0">© {{year}} {{company_name}} — ></p>
+              </td>
+            </tr>
+          </table>
+          <!-- End container -->
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

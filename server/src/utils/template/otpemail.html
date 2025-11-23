@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your OTP Code</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f3f6fb;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      @media only screen and (max-width: 600px) {
+        .container {
+          width: 100% !important;
+          padding: 16px !important;
+        }
+        .otp {
+          font-size: 28px !important;
+        }
+      }
+    </style>
+  </head>
+  <body style="background-color: #f3f6fb">
+    <table
+      role="presentation"
+      width="100%"
+      cellpadding="0"
+      cellspacing="0"
+      style="background-color: #f3f6fb; padding: 24px 0">
+      <tr>
+        <td align="center">
+          <table
+            role="presentation"
+            class="container"
+            width="600"
+            cellpadding="0"
+            cellspacing="0"
+            style="
+              background-color: #ffffff;
+              border-radius: 12px;
+              overflow: hidden;
+              box-shadow: 0 6px 18px rgba(20, 40, 80, 0.08);
+            ">
+            <!-- Header -->
+            <tr>
+              <td
+                style="
+                  padding: 24px;
+                  text-align: center;
+                  background: linear-gradient(90deg, #5b8cff, #7be0ff);
+                ">
+                <img
+                  src="{{logo_url}}"
+                  alt="Company logo"
+                  width="90"
+                  style="display: block; margin: 0 auto 12px auto" />
+                <h1
+                  style="
+                    margin: 0;
+                    font-size: 20px;
+                    color: #ffffff;
+                    font-weight: 700;
+                  ">
+                  Your One-Time Password (OTP)
+                </h1>
+              </td>
+            </tr>
+
+            <!-- Body -->
+            <tr>
+              <td style="padding: 32px">
+                <h2 style="margin: 0 0 12px 0; color: #10233b">
+                  Hi {{first_name}},
+                </h2>
+                <p
+                  style="
+                    color: #475569;
+                    font-size: 15px;
+                    line-height: 1.6;
+                    margin: 0 0 18px 0;
+                  ">
+                  Use the OTP code below to complete your verification. This
+                  code will expire in <strong>10 minutes</strong>.
+                </p>
+
+                <p
+                  class="otp"
+                  style="
+                    display: inline-block;
+                    background-color: #f3f6fb;
+                    border-radius: 8px;
+                    padding: 16px 24px;
+                    font-size: 36px;
+                    font-weight: 700;
+                    letter-spacing: 6px;
+                    color: #1158ff;
+                    margin: 24px 0;
+                  ">
+                  {{otp_code}}
+                </p>
+
+                <p style="color: #64748b; font-size: 14px; margin: 0 0 8px 0">
+                  Didn’t request this code? You can safely ignore this email.
+                </p>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td
+                style="
+                  padding: 18px 24px;
+                  text-align: center;
+                  font-size: 12px;
+                  color: #94a3b8;
+                  background-color: #fbfdff;
+                ">
+                <p style="margin: 0">
+                  © {{year}} {{company_name}}. All rights reserved.
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
