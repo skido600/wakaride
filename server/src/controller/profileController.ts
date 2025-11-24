@@ -3,8 +3,9 @@ import { HandleResponse } from "../utils/Response";
 import Auth from "../models/userSchema";
 import argon2 from "argon2";
 import fs from "fs";
-import uploadProfileImageToCloudinary from "../config/uploadC";
+
 import { cloudinary } from "../utils/cloudinary";
+import { CloudinaryUpload } from "../config/uploadTocloud";
 
 export async function DriverEditprofileNames(
   req: any,
@@ -94,7 +95,9 @@ export const updateProfileImage = async (
       await cloudinary.uploader.destroy(user.publicId);
     }
 
-    const result = await uploadProfileImageToCloudinary(req.file.path);
+    const result = await CloudinaryUpload.uploadProfileImageToCloudinary(
+      req.file.path
+    );
     fs.unlinkSync(req.file.path);
     user.image = result.url;
     user.publicId = result.publicId;

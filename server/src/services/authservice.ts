@@ -114,7 +114,7 @@ export const LoginService = async (
     if (!user) {
       throw new Error("User not found");
     }
-    const validPassword = await argon2.verify(password, user.password);
+    const validPassword = await argon2.verify(user.password, password);
     if (!validPassword) {
       throw new Error("Incorrect password");
     }

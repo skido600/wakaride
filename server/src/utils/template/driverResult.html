@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Driver Application Review</title>
+    <style>
+      /* General reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f4f6f8;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 40px 30px;
+        border-radius: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #d9534f;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      h2 {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      h2 span {
+        font-size: 1.3rem;
+      }
+      p {
+        margin-bottom: 20px;
+        font-size: 1rem;
+        text-align: center;
+      }
+
+      ul {
+        list-style: decimal inside;
+        margin-bottom: 20px;
+      }
+
+      li {
+        padding: 8px 0;
+      }
+      .footer_1 {
+        font-size: 14px;
+      }
+      .footer_2 {
+        font-size: 13px;
+      }
+
+      .images {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 20px;
+        justify-content: center;
+      }
+
+      .images img {
+        width: 160px;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .footer {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          margin: 10px;
+        }
+        .images img {
+          width: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Wakaride Application Review Result</h1>
+      <h2>Hello: <span>{{name}}</span></h2>
+      <p>{{header}}</p>
+
+      <!-- <ul> -->
+      {{issues}}
+
+      <div class="footer">
+        <p class="footer_1">
+          Please review these issues, update your application, and submit again.
+        </p>
+        <p style="margin: 0" class="footer_2">
+          © {{time}} {{company_name}}. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
