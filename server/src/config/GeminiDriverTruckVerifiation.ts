@@ -37,7 +37,6 @@ You are an AI verification system. Review this driver application.
 Check for:
 - fake or AI generated truck photos
 - mismatched truck type
-- low-quality or irrelevant images
 - Do not reject valid country-specific plate numbers. Only flag numbers that are obviously fake, inconsistent with the country, or contain impossible characters.
 - wrong phone number format
 - suspicious or uninformative descriptions

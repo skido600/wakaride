@@ -22,4 +22,7 @@ export class CloudinaryUpload {
       url: result.secure_url,
     };
   }
+  public static async uploadDriverImagetoCloudinarydistroy(filePath: any) {
+    const result = await cloudinary.uploader.destroy(filePath.path);
+  }
 }
