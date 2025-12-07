@@ -1,11 +1,10 @@
 import Redis from "ioredis";
+import { config } from "dotenv";
+config();
 
-const client = new Redis({
-  host: "127.0.0.1",
-  port: 6379,
+const client = new Redis(process.env.REDIS_URL as string, {
   maxRetriesPerRequest: null,
 });
-
 client.on("connect", () => {
   console.log("✅ Redis connected successfully");
 });
