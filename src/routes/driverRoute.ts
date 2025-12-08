@@ -5,6 +5,7 @@ import { allowRoles } from "../middleware/rolemiddleware";
 import {
   Drivercontroller,
   UpdateDriverInfo,
+  DeleteDriverImage,
 } from "../controller/Drivercontroller";
 import validateRequest from "../middleware/validateRequest";
 import { Driverdetails } from "../utils/Validate";
@@ -23,7 +24,12 @@ driverRoute.put(
   "/edit-driver",
   VerifyingToken,
   allowRoles("driver"),
-  upload.array("truckImagesDriver", 4),
   UpdateDriverInfo
+);
+driverRoute.put(
+  "/delete_img",
+  VerifyingToken,
+  allowRoles("driver"),
+  DeleteDriverImage
 );
 export default driverRoute;

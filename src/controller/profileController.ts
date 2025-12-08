@@ -6,6 +6,8 @@ import fs from "fs";
 
 import { cloudinary } from "../utils/cloudinary";
 import { CloudinaryUpload } from "../config/uploadTocloud";
+import UserSession from "../models/sessionSchema";
+import { formatLastSeen } from "../utils/helpers";
 
 export async function DriverEditprofileNames(
   req: any,
@@ -64,7 +66,8 @@ export async function Editprofilepassword(
     if (!user) {
       return HandleResponse(res, false, 400, "user not found");
     }
-    const validPassword = await argon2.verify(oldpassword, user.password);
+
+    const validPassword = await argon2.verify(user.password, oldpassword);
     if (!validPassword) {
       return HandleResponse(res, false, 400, "Incorrect old password");
     }
@@ -89,7 +92,7 @@ export const updateProfileImage = async (
     if (!userId) return HandleResponse(res, false, 401, "Unauthorized");
     const user = await Auth.findById(userId);
     if (!user) return HandleResponse(res, false, 404, "User not found");
-    if (!req.file) return HandleResponse(res, false, 404, "image not found");
+    // if (!req.file) return HandleResponse(res, false, 404, "image not found");
 
     if (user.publicId) {
       await cloudinary.uploader.destroy(user.publicId);
@@ -109,3 +112,23 @@ export const updateProfileImage = async (
     next(err);
   }
 };
+
+export async function getLastSeen(req: any, res: Response, next: NextFunction) {
+  try {
+    const userId = req.user._id;
+
+    const session = await UserSession.findOne({ userId });
+
+    if (!session) {
+      return HandleResponse(res, false, 404, "Session not found");
+    }
+
+    const formatted = formatLastSeen(session.lastSeen);
+    return HandleResponse(res, true, 200, "Last seen fetched", {
+      lastSeen: session.lastSeen,
+      formatted,
+    });
+  } catch (error) {
+    next(error);
+  }
+}

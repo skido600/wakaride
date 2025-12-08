@@ -24,6 +24,7 @@ app.use("/images", express.static(path.join(process.cwd(), "/public/images")));
 app.use("/api/auth", authroute);
 app.use("/api/edit", ProfileRoute);
 app.use("/api/driver", driverRoute);
+
 //error handling
 app.use(HandleError);
 app.use(notFound);

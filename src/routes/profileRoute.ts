@@ -4,6 +4,7 @@ import {
   DriverEditprofileNames,
   Editprofilepassword,
   updateProfileImage,
+  getLastSeen,
 } from "../controller/profileController";
 import { VerifyingToken } from "../middleware/VerifyingToken";
 import { allowRoles } from "../middleware/rolemiddleware";
@@ -17,7 +18,7 @@ ProfileRoute.put(
   "/driver_edit",
   validateRequest(DriverEdit),
   VerifyingToken,
-  allowRoles("driver"),
+  allowRoles("driver", "client"),
   DriverEditprofileNames
 );
 ProfileRoute.put(
@@ -33,4 +34,7 @@ ProfileRoute.put(
   upload.single("profileImage"),
   updateProfileImage
 );
+
+ProfileRoute.get("/last-seen", VerifyingToken, getLastSeen);
+
 export default ProfileRoute;

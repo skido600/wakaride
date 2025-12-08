@@ -1,3 +1,4 @@
+import UserSession from "../models/sessionSchema.ts";
 import Auth from "../models/userSchema.ts";
 import { queue as emailworker } from "../utils/emailworker.ts";
 import { hmacProcess, Otpcode } from "../utils/generateOtp.ts";
@@ -156,11 +157,15 @@ export const LoginService = async (
     const accesstoken = TokenGenerate.generateAccessToken(user);
     const refreshtoken = TokenGenerate.generateRefreshToken(user);
 
-    await client.set(
-      `refresh:${user._id}`,
-      refreshtoken,
-      "EX",
-      60 * 60 * 24 * 7
+    await UserSession.findOneAndUpdate(
+      { userId: user._id },
+      {
+        userId: user._id,
+        accessToken: accesstoken,
+        refreshToken: refreshtoken,
+        lastSeen: new Date(),
+      },
+      { upsert: true, new: true }
     );
 
     return { user, accesstoken, refreshtoken };

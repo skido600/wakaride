@@ -1,7 +1,8 @@
 import type { Request, Response, NextFunction } from "express";
 import pkg from "jsonwebtoken";
 import { config } from "dotenv";
-import { client } from "../utils/redis";
+import UserSession from "../models/sessionSchema";
+
 config();
 
 const { verify, sign } = pkg;
@@ -58,9 +59,12 @@ export const VerifyingToken = async (
       ) as any;
 
       // CHECK Redis stored token
-      const redisToken = await client.get(`refresh:${decodedRefresh._id}`);
+      const session = await UserSession.findOne({
+        userId: decodedRefresh._id,
+        refreshToken: refreshToken,
+      });
 
-      if (!redisToken || redisToken !== refreshToken) {
+      if (!session) {
         return res
           .status(401)
           .json({ message: "Invalid session, login again" });
@@ -78,7 +82,10 @@ export const VerifyingToken = async (
         process.env.ACCESS_TOKEN_SECRET as string,
         { expiresIn: "15m" }
       );
-
+      // UPDATE DB SESSION (VERY IMPORTANT)
+      session.accessToken = newAccessToken;
+      session.lastSeen = new Date();
+      await session.save();
       res.cookie("accessToken", newAccessToken, {
         httpOnly: true,
         secure: isProduction,
